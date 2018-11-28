@@ -9,9 +9,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+
+
 public class Base {
+
     protected WebDriver driver;
     protected Logger log;
+
 
     @Parameters({ "browser" })
     @BeforeMethod(alwaysRun = true)
