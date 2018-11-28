@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 
 public class Stepdefs extends Login{
+
     private boolean mainPageIsOpened;
 
     @Given("user entered the login page")

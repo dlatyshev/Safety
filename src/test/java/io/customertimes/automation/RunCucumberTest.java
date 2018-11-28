@@ -6,7 +6,7 @@ import io.customertimes.automation.utilities.Base;
 import org.openqa.selenium.WebDriver;
 
 @CucumberOptions(features = "src/test/resources/",
-plugin = {"pretty"}, glue = "steps")
+plugin = {"pretty"})
 public class RunCucumberTest extends AbstractTestNGCucumberTests {
 
 }
