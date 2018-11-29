@@ -1,8 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Smoke" verbose="1" >
-    <parameter name="login" value="roman.khudyakov@highpointsolutions.com.safety.dev1"/>
-    <parameter name="password" value="Poqw09123"/>
     <parameter name="browser" value="chrome"/>
 
     <test name="Login" >

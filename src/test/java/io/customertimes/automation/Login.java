@@ -2,11 +2,14 @@ package io.customertimes.automation;
 
 import io.customertimes.automation.pages.LoginPage;
 import io.customertimes.automation.pages.MainPage;
-import io.customertimes.automation.utilities.TestUtilities;
+import io.customertimes.automation.utilities.Base;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
-public abstract class Login extends TestUtilities {
+class Login extends Base {
+    private WebDriver driver = new ChromeDriver();
     private LoginPage loginPage = new LoginPage(driver);
 
     protected void goTo(){

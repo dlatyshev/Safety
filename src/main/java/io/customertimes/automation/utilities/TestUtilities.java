@@ -1,6 +1,6 @@
 package io.customertimes.automation.utilities;
 
-public class TestUtilities extends Base{
+public class TestUtilities extends Base {
     protected void sleep(long millis){
         try{
             Thread.sleep(millis);
