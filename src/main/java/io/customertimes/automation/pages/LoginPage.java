@@ -1,5 +1,7 @@
 package io.customertimes.automation.pages;
 
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends Page {
 
     //Fields
+    private By loginLocator = By.id("username");
+    private By passwordLocator = By.id("password");
+    private By loginBtnLocator = By.id("Login");
 
     @FindBy(id = "username")
     private WebElement loginField;
@@ -20,24 +25,23 @@ public class LoginPage extends Page {
 
     // Constructor
 
-    public LoginPage(WebDriver driver) {
-        super("Login | Salesforce", "https://test.salesforce.com/", driver);
-        PageFactory.initElements(driver(), this);
+    public LoginPage(WebDriver driver, Logger log) {
+        super(driver, log, "Login | Salesforce", "https://test.salesforce.com/");
     }
 
     //Methods
-    public void goTo(){
-        driver().get(super.url());
+    public void openPage(){
+        openUrl(url);
+    }
+    public HomePage logIn(String login, String password){
+       type(login, loginLocator);
+       type(password, passwordLocator);
+       click(loginBtnLocator);
+       return new HomePage(driver, log);
     }
 
-    public MainPage logIn(String login, String password){
-        loginField.sendKeys(login);
-        passwordField.sendKeys(password);
-        loginBtn.click();
-        return new MainPage(driver());
+    @Override
+    public String getCurrentUrl() {
+        return super.getCurrentUrl();
     }
-
-
-
-
 }

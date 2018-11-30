@@ -1,49 +1,85 @@
 package io.customertimes.automation.pages;
 
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 
-public class Page {
-    private String title;
-    private String url;
-    private WebDriver driver;
-    private WebDriverWait explicitWait;
 
-    public Page(String title, String url, WebDriver driver) {
+public abstract class Page {
+    protected WebDriver driver;
+    protected Logger log;
+    protected String title;
+    protected String url;
+
+
+    public Page(WebDriver driver, Logger log, String title, String url) {
+        this.driver = driver;
+        this.log = log;
         this.title = title;
         this.url = url;
-        this.driver = driver;
-        explicitWait = new WebDriverWait(driver, 20);
     }
 
     protected boolean isOpened(){
-        boolean result = false;
-
-        try {
-            result = explicitWait.until(ExpectedConditions.urlContains(url));
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-            result = false;
-        }
-        return result;
+        return getCurrentUrl().contains(url);
     }
 
-    protected String url(){
-        return url;
+    protected void openUrl(String url){
+        driver.get(url);
     }
 
-    protected String title(){
+    protected WebElement find(By locator){
+        return driver.findElement(locator);
+    }
+
+    protected List<WebElement> findAll(By locator){
+        return driver.findElements(locator);
+    }
+    protected void click(By locator){
+        waitForVisibilityOf(locator, 5);
+        find(locator).click();
+    }
+
+    protected void type(String text, By locator){
+        waitForVisibilityOf(locator, 5);
+        find(locator).sendKeys(text);
+    }
+
+    private void waitFor(ExpectedCondition<WebElement> condition, Integer timeOutIsSeconds){
+        timeOutIsSeconds = timeOutIsSeconds != null ? timeOutIsSeconds : 30;
+        WebDriverWait wait = new WebDriverWait(driver, timeOutIsSeconds);
+        wait.until(condition);
+    }
+
+    protected void waitForVisibilityOf(By locator, Integer ... timeOutInSeconds){
+        int attempts = 0;
+        while(attempts < 2){
+            try{
+                waitFor(ExpectedConditions.visibilityOfElementLocated(locator), (timeOutInSeconds.length > 0 ? timeOutInSeconds[0] : null));
+                break;
+            } catch (StaleElementReferenceException e){
+
+            }
+            attempts++;
+
+        }
+    }
+
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    protected WebDriver driver(){
-        return driver;
-    }
-
-    protected WebDriverWait explicitWait(){
-        return explicitWait;
+    public String getUrl() {
+        return url;
     }
 }
