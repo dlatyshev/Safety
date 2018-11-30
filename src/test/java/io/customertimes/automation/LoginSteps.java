@@ -26,15 +26,15 @@ public class LoginSteps extends TestUtilities {
     @Given("user opened the login page")
     public void user_opened_the_login_page() {
         loginPage.openPage();
+        log.info("Login page was opened.");
     }
     @When("^user entered \"([^\"]*)\" and \"([^\"]*)\" and clicked login button$")
     public void userEnteredAndAndClickLoginButton(String login, String password) {
        homePage = loginPage.logIn(login, password);
-       sleep(7000);
     }
-    @Then("Safety main page was opened")
-    public void safety_main_page_was_opened() {
-        Assert.assertEquals(homePage.getCurrentUrl(), homePage.getUrl());
+    @Then("Safety home page was opened")
+    public void safety_home_page_was_opened() {
+        Assert.assertTrue(homePage.isOpened());
     }
 
     @And("^browser was closed$")

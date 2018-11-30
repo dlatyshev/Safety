@@ -8,8 +8,11 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import javax.naming.InitialContext;
+import java.util.concurrent.TimeUnit;
 
 
 public class Base  {
@@ -17,9 +20,10 @@ public class Base  {
     protected Logger log;
 
     public void setUp(String browser) {
-        log = LogManager.getLogger("Logger");
+        log = LogManager.getLogger(getClass().getName());
         BrowserDriverFactory factory = new BrowserDriverFactory(browser, log);
         driver = factory.createDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public void tearDown() {

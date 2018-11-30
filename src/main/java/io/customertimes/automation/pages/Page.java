@@ -26,9 +26,7 @@ public abstract class Page {
         this.url = url;
     }
 
-    protected boolean isOpened(){
-        return getCurrentUrl().contains(url);
-    }
+    public abstract boolean isOpened();
 
     protected void openUrl(String url){
         driver.get(url);

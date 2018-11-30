@@ -14,15 +14,6 @@ public class LoginPage extends Page {
     private By passwordLocator = By.id("password");
     private By loginBtnLocator = By.id("Login");
 
-    @FindBy(id = "username")
-    private WebElement loginField;
-
-    @FindBy(id = "password")
-    private WebElement passwordField;
-
-    @FindBy(id = "Login")
-    private WebElement loginBtn;
-
     // Constructor
 
     public LoginPage(WebDriver driver, Logger log) {
@@ -38,6 +29,11 @@ public class LoginPage extends Page {
        type(password, passwordLocator);
        click(loginBtnLocator);
        return new HomePage(driver, log);
+    }
+
+    @Override
+    public boolean isOpened() {
+        return find(loginBtnLocator).isDisplayed();
     }
 
     @Override

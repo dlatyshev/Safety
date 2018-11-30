@@ -3,10 +3,10 @@ Feature: Log in to the Safety application
 
   Scenario Outline: Log in to the Safety
     Given user opened the "<browser>"
-    And user opened the login page
+    Given user opened the login page
     When user entered "<login>" and "<password>" and clicked login button
-    Then Safety main page was opened
-    And browser was closed
+    Then Safety home page was opened
+    Then browser was closed
 
     Examples:
       | browser | login                                              | password  |
