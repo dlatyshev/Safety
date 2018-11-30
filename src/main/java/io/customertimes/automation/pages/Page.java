@@ -62,7 +62,7 @@ public abstract class Page {
                 waitFor(ExpectedConditions.visibilityOfElementLocated(locator), (timeOutInSeconds.length > 0 ? timeOutInSeconds[0] : null));
                 break;
             } catch (StaleElementReferenceException e){
-
+                e.printStackTrace();
             }
             attempts++;
 
