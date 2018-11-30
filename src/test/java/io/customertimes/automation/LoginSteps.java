@@ -26,7 +26,6 @@ public class LoginSteps extends TestUtilities {
     @Given("user opened the login page")
     public void user_opened_the_login_page() {
         loginPage.openPage();
-        log.info("Login page was opened.");
     }
     @When("^user entered \"([^\"]*)\" and \"([^\"]*)\" and clicked login button$")
     public void userEnteredAndAndClickLoginButton(String login, String password) {
@@ -37,7 +36,7 @@ public class LoginSteps extends TestUtilities {
         Assert.assertTrue(homePage.isOpened());
     }
 
-    @And("^browser was closed$")
+    @Then("^browser was closed$")
     public void browserWasClosed(){
         tearDown();
     }

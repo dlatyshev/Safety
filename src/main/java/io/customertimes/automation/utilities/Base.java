@@ -25,7 +25,11 @@ public class Base  {
         driver = factory.createDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+    public void maximizeWindow(WebDriver driver){
+        driver.manage().window().maximize();
+    }
 
+    // Hello
     public void tearDown() {
         log.info("Close driver");
         // Close browser
