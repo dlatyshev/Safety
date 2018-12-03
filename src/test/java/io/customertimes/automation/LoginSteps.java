@@ -41,4 +41,8 @@ public class LoginSteps extends TestUtilities {
         tearDown();
     }
     // Some changes to the script to make sure that everything works fine
+
+    public void newTestMethod(){
+        System.out.println("Hello");
+    }
 }
