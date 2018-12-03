@@ -40,5 +40,5 @@ public class LoginSteps extends TestUtilities {
     public void browserWasClosed(){
         tearDown();
     }
-    // More tests for sure
+    // Some changes to the script to make sure that everything works fine
 }
