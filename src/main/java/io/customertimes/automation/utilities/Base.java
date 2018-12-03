@@ -1,17 +1,11 @@
 package io.customertimes.automation.utilities;
 
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.testng.AbstractTestNGCucumberTests;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
-import org.testng.annotations.*;
 
-import javax.naming.InitialContext;
 import java.util.concurrent.TimeUnit;
 
 
@@ -35,6 +29,4 @@ public class Base  {
         // Close browser
         driver.quit();
     }
-
-
 }
