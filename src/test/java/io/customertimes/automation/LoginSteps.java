@@ -40,5 +40,9 @@ public class LoginSteps extends TestUtilities {
     public void browserWasClosed(){
         tearDown();
     }
-    // Just another test to check pull requests
+    // Some changes to the script to make sure that everything works fine
+
+    public void newTestMethod(){
+        System.out.println("Hello");
+    }
 }
