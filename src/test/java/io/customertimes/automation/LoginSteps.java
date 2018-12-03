@@ -40,5 +40,5 @@ public class LoginSteps extends TestUtilities {
     public void browserWasClosed(){
         tearDown();
     }
-    // Just another test to check pull requests
+    // More tests
 }
